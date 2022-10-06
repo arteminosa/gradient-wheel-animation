@@ -12,6 +12,16 @@ body
     min-height: 100vh;
     background: #222;
 }
+body::before
+{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(#9c08ff, #1cff07);
+    z-index: 10;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+}
 .circle
 {
     position: relative;
@@ -38,4 +48,43 @@ body
     background: linear-gradient(0deg, transparent, #fff);
     transform-origin: bottom;
     animation: animateNeedles 20s steps(60) infinite; 
+}
+.circle::after
+{
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 130px;
+    border-radius: 2px;
+    background: linear-gradient(0deg, transparent, #fff);
+    transform-origin: bottom;
+    animation: animateNeedles 120s steps(60) infinite; 
+}
+@keyframes animateNeedles 
+{
+    0%{
+        transform: translate(-50%,-50%) rotate(0deg);
+    }
+    100%{
+        transform: translate(-50%,-50%) rotate(360deg);
+    }
+}
+ul li {
+    position: absolute;
+    top: 10px;
+    list-style: none;
+    transform-origin: 0 240px;
+    transform: rotate(calc(32.72deg * var(--i)));
+    font-size: 2.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: consolas;
+}
+ul li span {
+    display: inline-block;
+    color: #fff;
+    transform: rotate(calc(-32.72deg * var(--i)));
+    text-shadow: 0 0 10px #fff, 
+    0 0 25px #fff,
+    0 0 60px #fff;
 }
